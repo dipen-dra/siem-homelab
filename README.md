@@ -24,9 +24,7 @@ Two design decisions were made to fit an Apple Silicon environment:
 - **Kali and Ubuntu both run natively on ARM64** rather than through x86 emulation, keeping performance close to native.
 
 ### Architecture
-
-![Home lab SIEM architecture: Kali attacks Ubuntu over SSH, Wazuh manager detects the brute force via rule 5763, and active response blocks the attacker's IP]
-![alt text](<Ubuntu VM (home-lab).png>)
+<img width="2720" height="1800" alt="Ubuntu VM (home-lab)" src="https://github.com/user-attachments/assets/40d604bf-d642-499c-8151-c69dd9a73c50" />
 
 ## Methodology
 
@@ -92,7 +90,8 @@ The attack was re-run to verify the full detection-to-response pipeline end to e
 - Escalation to `sshd: brute force trying to get access to the system` (rule 5763, level 10)
 - `Host Blocked by firewall-drop Active Response` (rule 651, level 3)
 
-![Wazuh Threat Hunting dashboard showing the full alert sequence: repeated authentication failures (rule 5760), escalation to brute-force detection (rule 5763, level 10), and the automated block (rule 651)]![alt text](<Pasted Graphic 1.png>)
+<img width="1470" height="692" alt="Pasted Graphic 1" src="https://github.com/user-attachments/assets/27191412-5db1-440f-98be-9fc3374935b9" />
+
 
 **Active response log** (`/var/ossec/logs/active-responses.log`) confirmed the block was executed against the correct source IP, with the full alert context including the MITRE mapping:
 
